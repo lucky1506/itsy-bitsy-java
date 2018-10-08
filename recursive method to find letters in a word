@@ -1,0 +1,36 @@
+//A simple recursive method that checks if a 'Word' has a specific letter but without another specific letter.
+
+public static boolean pWithoutQ(String word) {
+
+		// use a helper recursive method to find a character in a given word
+		boolean result_p = findCharacterHelper(word, 'p');
+		boolean result_q = findCharacterHelper(word, 'q');
+
+		// Return true, if word contains only p, but not q. Otherwise return false
+		if (result_p && !result_q) {
+			return true;
+		} else {
+			return false;
+		}
+	} // end of pWithoutQ()
+		
+    
+	// recursive helper method
+	private static boolean findCharacterHelper(String w, char c) {
+
+		// Base case 1: if word is empty
+		if (w.length() == 0) {
+			return false;
+		}
+		
+		// Base Case 2: return true if character is found at 0 index of word
+		else if (w.charAt(0) == c)
+		{
+			return true;
+		}
+
+		// call the same function again on the rest of the string starting after the first letter 
+		else {
+			return findCharacterHelper(w.substring(1), c);
+		}
+	} // end of findCharacterHelper()
